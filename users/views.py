@@ -44,7 +44,7 @@ class ProfileTemplateViews(TemplateView):
         context["mood_form"] = MoodModelForm(initial={"mood_score": "0"})
         context["list_endeavor"] = Endeavor.objects.filter(author=self.request.user)[:3]
         context["list_task"] = Task.objects.filter(endeavor__author=self.request.user)[:3]
-        context["list_accomplished"] = AccomplishedGoal.objects.filter(author=self.request.user)[:3]
+        context["list_accomplished"] = AccomplishedGoal.objects.filter(author_id=self.request.user)[:3]
         return context
 
     def post(self, request, *args, **kwargs):
